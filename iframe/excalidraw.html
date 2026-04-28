@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-Hans">
+	<head>
+		<title>Excalidraw</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="/iframe/excalidraw-assets/index.css" />
+		<style>
+			* { margin: 0; padding: 0; box-sizing: border-box; }
+			html, body, #root { width: 100%; height: 100%; overflow: hidden; }
+		</style>
+		<script>
+			// Tell Excalidraw to load all assets (fonts, locales, chunks) from local path
+			window.EXCALIDRAW_ASSET_PATH = '/iframe/excalidraw-assets/';
+		</script>
+	</head>
+	<body>
+		<div id="root"></div>
+		<script src="/iframe/dist/excalidraw-app.js"></script>
+	</body>
+</html>

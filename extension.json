@@ -1,0 +1,86 @@
+{
+	"name": "eext-excalidraw",
+	"uuid": "b12006c163f1454b99761d3641048b76",
+	"displayName": "Excalidraw手绘白板",
+	"description": "Integrate Excalidraw hand-drawn whiteboard into EasyEDA Pro",
+	"version": "1.4.1",
+	"publisher": "JLCEDA",
+	"engines": {
+		"eda": "^3.0.0"
+	},
+	"license": "Apache-2.0",
+	"repository": {
+		"type": "github",
+		"url": "https://github.com/easyeda/eext-excalidraw"
+	},
+	"categories": "Other",
+	"keywords": [
+		"Tool",
+		"Whiteboard",
+		"Excalidraw"
+	],
+	"images": {
+		"logo": "./images/logo.png"
+	},
+	"homepage": "https://github.com/easyeda",
+	"bugs": "https://github.com/easyeda/eext-excalidraw/issues",
+	"activationEvents": {},
+	"entry": "./dist/index",
+	"dependentExtensions": {},
+	"headerMenus": {
+		"home": [
+			{
+				"id": "excalidraw-home-menu",
+				"title": "Excalidraw",
+				"menuItems": [
+					{
+						"id": "excalidraw-home-open",
+						"title": "Open Whiteboard",
+						"registerFn": "openExcalidraw"
+					},
+					{
+						"id": "excalidraw-home-about",
+						"title": "About...",
+						"registerFn": "about"
+					}
+				]
+			}
+		],
+		"sch": [
+			{
+				"id": "excalidraw-sch-menu",
+				"title": "Excalidraw",
+				"menuItems": [
+					{
+						"id": "excalidraw-sch-open",
+						"title": "Open Whiteboard",
+						"registerFn": "openExcalidraw"
+					},
+					{
+						"id": "excalidraw-sch-about",
+						"title": "About...",
+						"registerFn": "about"
+					}
+				]
+			}
+		],
+		"pcb": [
+			{
+				"id": "excalidraw-pcb-menu",
+				"title": "Excalidraw",
+				"menuItems": [
+					{
+						"id": "excalidraw-pcb-open",
+						"title": "Open Whiteboard",
+						"registerFn": "openExcalidraw"
+					},
+					{
+						"id": "excalidraw-pcb-about",
+						"title": "About...",
+						"registerFn": "about"
+					}
+				]
+			}
+		]
+	}
+}
