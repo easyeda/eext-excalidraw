@@ -1,8 +1,8 @@
 {
 	"name": "eext-excalidraw",
 	"uuid": "b12006c163f1454b99761d3641048b76",
-	"displayName": "Excalidraw手绘白板",
-	"description": "Integrate Excalidraw hand-drawn whiteboard into EasyEDA Pro",
+	"displayName": "Excalidraw 手绘白板",
+	"description": "Excalidraw 手绘风格白板，支持自由绘图、Mermaid 图表生成、手绘图稿转丝印/阻焊开窗及彩色丝印转换",
 	"version": "1.4.1",
 	"publisher": "JLCEDA",
 	"engines": {

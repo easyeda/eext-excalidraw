@@ -1,6 +1,6 @@
 [简体中文](./README.md) | [English](#)
 
-# Excalidraw
+# Excalidraw Hand-drawn Whiteboard
 
 Based on [Excalidraw](https://excalidraw.com/), integrated with [EasyEDA Pro API](https://prodocs.lceda.cn/cn/api/reference/pro-api.html).  
 Now you can use the [Excalidraw](https://excalidraw.com/) hand-drawn whiteboard inside [EasyEDA Pro](https://pro.easyeda.com/).
@@ -13,7 +13,7 @@ Now you can use the [Excalidraw](https://excalidraw.com/) hand-drawn whiteboard 
 ✅ Mermaid integration — generate flowcharts, sequence diagrams, and class diagrams with one click, bringing logic structures onto your board  
 ![alt text](images/gif6-2.gif)
 
-✅ Smart binarization — instantly convert hand-drawn artwork to silkscreen/ENIG process, creating PCBs with a unique personal touch  
+✅ Smart binarization — instantly convert hand-drawn artwork to silkscreen/solder mask opening, creating PCBs with a unique personal touch  
 ![alt text](images/gif6-3.gif)
 
 ✅ Color image export — one-click conversion for color silkscreen process, making your custom logos and color-printed PCBs stand out  
@@ -21,4 +21,4 @@ Now you can use the [Excalidraw](https://excalidraw.com/) hand-drawn whiteboard 
 
 ## Credits
 
-- Thanks to the [Excalidraw organization](https://github.com/excalidraw/excalidraw) and [community contributors](contributors)
+- Thanks to the [Excalidraw organization](https://github.com/excalidraw/excalidraw) and [community contributors](https://github.com/excalidraw/excalidraw/graphs/contributors)
