@@ -26,5 +26,6 @@
 	"excalidraw.export.whiteBackground": "白色作为背景色",
 	"excalidraw.export.inversion": "反相",
 	"excalidraw.export.cancel": "取消",
-	"excalidraw.export.confirm": "导出"
+	"excalidraw.export.confirm": "导出",
+	"iframe.samplePage": "这是一个示例 IFrame 页面"
 }

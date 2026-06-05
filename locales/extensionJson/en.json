@@ -1,5 +1,9 @@
 {
 	"Excalidraw": "Excalidraw",
 	"Open Whiteboard": "Open Whiteboard",
-	"About...": "About..."
+	"About...": "About...",
+	"Excalidraw 手绘白板": "Excalidraw Hand-drawn Whiteboard",
+	"Excalidraw 手绘风格白板，支持自由绘图、Mermaid 图表生成、手绘图稿转丝印/阻焊开窗及彩色丝印转换": "Excalidraw hand-drawn style whiteboard, supports free drawing, Mermaid diagram generation, converting hand-drawn sketches to silkscreen/solder mask openings, and color silkscreen conversion",
+	"Tool": "Tool",
+	"Whiteboard": "Whiteboard"
 }

@@ -26,5 +26,6 @@
 	"excalidraw.export.whiteBackground": "White as background",
 	"excalidraw.export.inversion": "Inversion",
 	"excalidraw.export.cancel": "Cancel",
-	"excalidraw.export.confirm": "Export"
+	"excalidraw.export.confirm": "Export",
+	"iframe.samplePage": "This is a sample IFrame page"
 }
