@@ -221,14 +221,14 @@ function ExportDialog({ api, onClose }: {
 		try {
 			const elements = api.getSceneElements();
 			if (!elements || elements.length === 0) {
-				eda.sys_Dialog.showInformationMessage(eda.sys_I18n.text('excalidraw.noElements'));
+				eda.sys_Dialog.showInformationMessage(eda.sys_I18n.text('没有可导出的元素，请先绘制内容。'));
 				return;
 			}
 			const docInfo = await eda.dmt_SelectControl.getCurrentDocumentInfo();
 			if (!docInfo || (docInfo.documentType !== 3 && docInfo.documentType !== 4)) {
 				const msg = docInfo?.documentType === 1
-					? eda.sys_I18n.text('excalidraw.notSupportSch')
-					: eda.sys_I18n.text('excalidraw.notPcb');
+					? eda.sys_I18n.text('暂不支持原理图界面导出，目前仅支持 PCB 界面导出。')
+					: eda.sys_I18n.text('请先打开 PCB 文档再导出到嘉立创EDA。');
 				eda.sys_Dialog.showInformationMessage(msg);
 				return;
 			}
@@ -246,7 +246,7 @@ function ExportDialog({ api, onClose }: {
 			});
 			const { width, height } = await loadImageSize(blob);
 			if (width === 0 || height === 0) {
-				eda.sys_Dialog.showInformationMessage(eda.sys_I18n.text('excalidraw.noElements'));
+				eda.sys_Dialog.showInformationMessage(eda.sys_I18n.text('没有可导出的元素，请先绘制内容。'));
 				return;
 			}
 
@@ -264,7 +264,7 @@ function ExportDialog({ api, onClose }: {
 					opts.inversion,
 				);
 				if (!complexPolygon) {
-					eda.sys_Dialog.showInformationMessage(eda.sys_I18n.text('excalidraw.convertFailed'));
+					eda.sys_Dialog.showInformationMessage(eda.sys_I18n.text('图像转换为 PCB 多边形数据失败。'));
 					return;
 				}
 				result = await eda.pcb_PrimitiveImage.create(
@@ -292,16 +292,16 @@ function ExportDialog({ api, onClose }: {
 			}
 
 			if (result) {
-				eda.sys_Dialog.showInformationMessage(eda.sys_I18n.text('excalidraw.exportSuccess'));
+				eda.sys_Dialog.showInformationMessage(eda.sys_I18n.text('绘图已成功导出到 PCB！'));
 				onClose();
 			}
 			else {
-				eda.sys_Dialog.showInformationMessage(eda.sys_I18n.text('excalidraw.exportFailed'));
+				eda.sys_Dialog.showInformationMessage(eda.sys_I18n.text('导出绘图到 PCB 失败。'));
 			}
 		}
 		catch (err) {
 			console.error(PLUGIN_TAG, 'Export failed:', err);
-			eda.sys_Dialog.showInformationMessage(eda.sys_I18n.text('excalidraw.exportFailed'));
+			eda.sys_Dialog.showInformationMessage(eda.sys_I18n.text('导出绘图到 PCB 失败。'));
 		}
 		finally {
 			setExporting(false);
@@ -349,7 +349,7 @@ function ExportDialog({ api, onClose }: {
 			>
 				{/* Header */}
 				<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-					<h3 style={{ margin: 0, fontSize: 16 }}>{eda.sys_I18n.text('excalidraw.export.title')}</h3>
+					<h3 style={{ margin: 0, fontSize: 16 }}>{eda.sys_I18n.text('导出到嘉立创EDA标题')}</h3>
 					<button
 						type="button"
 						onClick={onClose}
@@ -383,7 +383,7 @@ function ExportDialog({ api, onClose }: {
 								fontWeight: opts.mode === m ? 600 : 400,
 							}}
 						>
-							{eda.sys_I18n.text(`excalidraw.export.mode.${m}`)}
+							{eda.sys_I18n.text(m === 'binary' ? '二值化图' : '彩图')}
 						</button>
 					))}
 				</div>
@@ -403,13 +403,13 @@ function ExportDialog({ api, onClose }: {
 				>
 					{previewUrl
 						? <img src={previewUrl} alt="preview" style={{ maxWidth: '100%', maxHeight: 200, objectFit: 'contain' }} />
-						: <span style={{ color: '#999', fontSize: 13 }}>{eda.sys_I18n.text('excalidraw.noElements')}</span>}
+						: <span style={{ color: '#999', fontSize: 13 }}>{eda.sys_I18n.text('没有可导出的元素，请先绘制内容。')}</span>}
 				</div>
 
 				{/* Common options */}
 				<div style={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
 					<label style={labelStyle}>
-						<span>{eda.sys_I18n.text('excalidraw.export.background')}</span>
+						<span>{eda.sys_I18n.text('背景')}</span>
 						<input
 							type="checkbox"
 							checked={opts.background}
@@ -418,7 +418,7 @@ function ExportDialog({ api, onClose }: {
 						/>
 					</label>
 					<label style={labelStyle}>
-						<span>{eda.sys_I18n.text('excalidraw.export.darkMode')}</span>
+						<span>{eda.sys_I18n.text('深色模式')}</span>
 						<input
 							type="checkbox"
 							checked={opts.darkMode}
@@ -427,7 +427,7 @@ function ExportDialog({ api, onClose }: {
 						/>
 					</label>
 					<label style={labelStyle}>
-						<span>{eda.sys_I18n.text('excalidraw.export.embedScene')}</span>
+						<span>{eda.sys_I18n.text('包含画布数据')}</span>
 						<input
 							type="checkbox"
 							checked={opts.embedScene}
@@ -436,7 +436,7 @@ function ExportDialog({ api, onClose }: {
 						/>
 					</label>
 					<label style={labelStyle}>
-						<span>{eda.sys_I18n.text('excalidraw.export.scale')}</span>
+						<span>{eda.sys_I18n.text('缩放比例')}</span>
 						<select
 							value={opts.scale}
 							style={selectStyle}
@@ -451,7 +451,7 @@ function ExportDialog({ api, onClose }: {
 						</select>
 					</label>
 					<label style={labelStyle}>
-						<span>{eda.sys_I18n.text('excalidraw.export.layer')}</span>
+						<span>{eda.sys_I18n.text('导出层')}</span>
 						<select
 							value={effectiveLayer}
 							style={selectStyle}
@@ -466,7 +466,7 @@ function ExportDialog({ api, onClose }: {
 				{opts.mode === 'binary' && (
 					<div style={{ borderTop: '1px solid #eee', marginTop: 8, paddingTop: 8, display: 'flex', flexDirection: 'column', gap: 1 }}>
 						<label style={labelStyle}>
-							<span>{eda.sys_I18n.text('excalidraw.export.tolerance')}</span>
+							<span>{eda.sys_I18n.text('容差')}</span>
 							<div style={rangeLabel}>
 								<input
 									type="range"
@@ -480,7 +480,7 @@ function ExportDialog({ api, onClose }: {
 							</div>
 						</label>
 						<label style={labelStyle}>
-							<span>{eda.sys_I18n.text('excalidraw.export.simplification')}</span>
+							<span>{eda.sys_I18n.text('简化')}</span>
 							<div style={rangeLabel}>
 								<input
 									type="range"
@@ -494,7 +494,7 @@ function ExportDialog({ api, onClose }: {
 							</div>
 						</label>
 						<label style={labelStyle}>
-							<span>{eda.sys_I18n.text('excalidraw.export.smoothing')}</span>
+							<span>{eda.sys_I18n.text('平滑')}</span>
 							<div style={rangeLabel}>
 								<input
 									type="range"
@@ -508,7 +508,7 @@ function ExportDialog({ api, onClose }: {
 							</div>
 						</label>
 						<label style={labelStyle}>
-							<span>{eda.sys_I18n.text('excalidraw.export.despeckling')}</span>
+							<span>{eda.sys_I18n.text('去斑')}</span>
 							<div style={rangeLabel}>
 								<input
 									type="range"
@@ -522,7 +522,7 @@ function ExportDialog({ api, onClose }: {
 							</div>
 						</label>
 						<label style={labelStyle}>
-							<span>{eda.sys_I18n.text('excalidraw.export.whiteBackground')}</span>
+							<span>{eda.sys_I18n.text('白色作为背景色')}</span>
 							<input
 								type="checkbox"
 								checked={opts.whiteBackground}
@@ -531,7 +531,7 @@ function ExportDialog({ api, onClose }: {
 							/>
 						</label>
 						<label style={labelStyle}>
-							<span>{eda.sys_I18n.text('excalidraw.export.inversion')}</span>
+							<span>{eda.sys_I18n.text('反相')}</span>
 							<input
 								type="checkbox"
 								checked={opts.inversion}
@@ -556,7 +556,7 @@ function ExportDialog({ api, onClose }: {
 							fontSize: 13,
 						}}
 					>
-						{eda.sys_I18n.text('excalidraw.export.cancel')}
+						{eda.sys_I18n.text('取消')}
 					</button>
 					<button
 						type="button"
@@ -573,7 +573,7 @@ function ExportDialog({ api, onClose }: {
 							opacity: exporting ? 0.6 : 1,
 						}}
 					>
-						{exporting ? '...' : eda.sys_I18n.text('excalidraw.export.confirm')}
+						{exporting ? '...' : eda.sys_I18n.text('导出')}
 					</button>
 				</div>
 			</div>
@@ -670,7 +670,7 @@ function App() {
 					<button
 						type="button"
 						onClick={() => setShowExportDialog(true)}
-						title={eda.sys_I18n.text('excalidraw.btn.exportToPcb.tip')}
+						title={eda.sys_I18n.text('将绘图导出为图像到嘉立创EDA PCB')}
 						style={{
 							padding: '6px 12px',
 							borderRadius: 6,
@@ -681,7 +681,7 @@ function App() {
 							whiteSpace: 'nowrap',
 						}}
 					>
-						{`📤 ${eda.sys_I18n.text('excalidraw.btn.exportToPcb')}`}
+						{`📤 ${eda.sys_I18n.text('导出到嘉立创EDA')}`}
 					</button>
 				)}
 			>
